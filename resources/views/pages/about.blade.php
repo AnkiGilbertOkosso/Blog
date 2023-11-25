@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About {{ $fullname }}</title>
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        section {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel Blog - About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to {{ $fullname }}</h1>
-    </header>
+    <!-- Default bootstrap navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Laravel Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact us</a>
+                    </li>
+                </ul>
+                <li class="nav-item dropdown list-unstyled">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </nav>
+    <!-- end of Default bootstrap navbar -->
 
-    <section>
-        <h2>About Us</h2>
-        <p>Gilteck Blog was born out of a shared love for knowledge and a deep appreciation for the written word. Our team of writers, thinkers, and creatives is dedicated to creating content that engages, entertains, and enriches the lives of our readers.</p>
+    <!-- About container starts -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>About Us</h2>
+                <p>Welcome to Laravel Blog, your go-to destination for insightful and engaging content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Our team of passionate writers is dedicated to bringing you the latest news, trends, and in-depth analysis across various topics. Whether you're a seasoned developer or a curious learner, you'll find valuable resources and thought-provoking articles here at Laravel Blog.</p>
+                <p>Thank you for being part of our community. Explore our blog, share your thoughts, and stay tuned for more exciting content!</p>
+            </div>
 
-        <h2>Our Mission</h2>
-        <p>Our mission is simple yet profound: to be a source of inspiration and information that transcends boundaries. We aim to create a community where ideas are exchanged, perspectives are broadened, and where everyone feels welcome and valued.</p>
+            <div class="col-md-4">
+                <h2>Meet the Team</h2>
+                <!-- Add team member information here -->
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Team Member">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="card-text">Web Developer</p>
+                    </div>
+                </div>
+                <!-- Repeat the card structure for each team member -->
+            </div>
+        </div>
+    </div>
+    <!-- About container ends -->
 
-        <h2>What We Offer</h2>
-        <ul>
-            <li><strong>Diverse Content:</strong> From thought-provoking essays to practical how-to guides, we cover a wide range of topics to cater to varied interests.</li>
-            <li><strong>Quality Writing:</strong> We believe in the power of well-crafted words. Our content is meticulously researched, thoughtfully written, and thoroughly edited to ensure a high standard of quality.</li>
-            <li><strong>Community Engagement:</strong> We cherish the conversations that happen in the comments section. Your thoughts, opinions, and questions are not just welcomed but encouraged.</li>
-            <li><strong>Fresh Perspectives:</strong> We strive to bring you content that challenges the status quo and offers fresh perspectives on familiar topics. We believe in the power of diverse voices to shape a richer understanding of the world.</li>
-        </ul>
-
-        <h2>Join Our Community</h2>
-        <p>Whether you're a seasoned reader or just stumbled upon our site, we invite you to join our community. Subscribe to our newsletter to stay updated on the latest articles, follow us on social media to engage in discussions, and, most importantly, share your thoughts with us.</p>
-
-        <p>Thank you for being a part of Gilteck Blog. Together, let's explore the endless possibilities that the world of words has to offer.</p>
-    </section>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
