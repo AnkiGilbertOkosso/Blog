@@ -3,7 +3,7 @@
 
 @section('title', '| Home')
 
- @section('content')
+@section('content')
  <!-- header row start   -->
         <div class="row"> 
             <div class="col-md-12 text-center py-5">
@@ -54,4 +54,4 @@
                 <h2>SideBar</h2>
             </div>
         </div>
-@endsection()
+@endsection
