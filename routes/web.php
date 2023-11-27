@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,4 @@ use App\Http\Controllers\PagesController;
 Route::get('/', [PagesController::class, 'getIndex']);
 Route::get('/about', [PagesController::class, 'getAbout']);
 Route::get('/contact', [PagesController::class, 'getContact']);
+Route::resource('posts', PostController::class);
