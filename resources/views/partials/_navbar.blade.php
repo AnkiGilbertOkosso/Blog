@@ -8,13 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link {{ Request::is('/') ? "active" : "" }}" aria-current="{{ Request::is('/') ? "page" : "" }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link {{ Request::is('about') ? "active" : "" }}" aria-current="{{ Request::is('about') ? "page" : "" }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact us</a>
+                    <a class="nav-link {{ Request::is('contact') ? "active" : "" }}" aria-current="{{ Request::is('contact') ? "page" : "" }}" href="/contact">Contact us</a>
                 </li>
             </ul>
             <li class="nav-item dropdown list-unstyled">
