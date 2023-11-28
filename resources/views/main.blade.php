@@ -6,6 +6,7 @@
         @include('partials._navbar')
         <!-- header container starts -->
         <div class="container mt-4">
+            @include('partials._messages')
             @yield('content')
             @include('partials._footer')
         </div>
