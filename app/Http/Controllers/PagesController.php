@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Post;
+
 
 class PagesController extends Controller{
 
     public function getIndex(){
-        return view('pages/welcome');
+        $posts = Post::all();
+
+        return view('pages.welcome')->withPosts($posts);
     }
     public function getAbout(){
         $first = "Anki";
