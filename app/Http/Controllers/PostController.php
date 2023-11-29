@@ -35,7 +35,8 @@ class PostController extends Controller
     {
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ));
 
         $post = new Post;
