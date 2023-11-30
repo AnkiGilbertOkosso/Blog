@@ -9,6 +9,7 @@
             <h1>{{ $post->title }}</h1>
             <img src="{{ asset('images/' . $post->image) }}" alt="post image" height="500" width="500">
             <p class="lead">{{ $post->body }}</p>
+            <p class="lead">{{ $post->category->name }}</p>
         </div>
 
         <!-- Right Column: Post Information and Actions -->
