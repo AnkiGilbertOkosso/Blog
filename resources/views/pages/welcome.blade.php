@@ -4,12 +4,12 @@
 
 @section('content')
     <!-- Header Row Start -->
-    <div class="row"> 
-        <div class="col-md-12 text-center py-5">
-            <div class="display-4">
-                <h1>Welcome to my blog!</h1>
-                <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos aut ex ullam neque assumenda, recusandae odit velit, suscipit excepturi soluta a eius inventore debitis in corrupti. Architecto qui quisquam illum.</p>
-                <p><a href="{{ route('posts.create') }}" class="btn btn-lg btn-block btn-primary">Create New Blog Post</a></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+              <h1>Welcome to My Blog!</h1>
+              <p class="lead">Thank you so much for visiting. This is my test website built with Laravel. Please read my popular post!</p>
+              <p><a class="btn btn-primary btn-lg" href="{{ route('posts.create') }}" role="button">Create Post</a></p>
             </div>
         </div>
     </div>
