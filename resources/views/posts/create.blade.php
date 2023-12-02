@@ -1,34 +1,46 @@
-@extends('main')
-
-@section('title', '| Create New Post')
+@extends('layout')
+@section('post_style')
+<link rel="stylesheet" href="{{ asset('css/post_styles.css') }}">
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
 @section('content')
-    <div class="row">
-        <!-- Create New Post Form -->
-        <div class="col-md-8 d-grid gap-2">
-            <h1>Create a New Blog Post</h1>
-            <hr>
+    <div class="container mx-auto mt-8">
+        <div class="max-w-md mx-auto bg-white p-8 border rounded-md shadow-md">
+            <h2 class="text-2xl font-semibold mb-6">Create a New Blog Post</h2>
 
-            <!-- Open a form for creating a new post -->
-            {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
-                
-                <!-- Title Input -->
-                {{ Form::label('title', 'Title:') }}
-                {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-                <!-- Body Textarea -->
-                {{ Form::label('body', 'Post Body:') }}
-                {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => ''))}}
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-600">Title</label>
+                    <input type="text" name="title" id="title" class="mt-1 p-2 w-full border rounded-md">
+                </div>
 
-                <!-- Featured Image Upload -->
-                {{ Form::label('featured_image', 'Upload Featured Image') }}
-                {{ Form::file('featured_image') }}
+                <div class="mb-4" id="body_area">
+                    <label for="body" class="block text-sm font-medium text-gray-600">Body</label>
+                    <textarea name="body" id="body" rows="4" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                </div>
 
-                <!-- Submit Button -->
-                {{ Form::submit('Create Post', array('class' => 'btn btn-primary btn-lg', 'style' => 'margin-top: 20px')) }}
+                <div class="mb-4">
+                    <label for="image" class="block text-sm font-medium text-gray-600">Image</label>
+                    <input type="file" name="image" id="image" accept="image/*" class="mt-1">
+                </div>
 
-            <!-- Close the form -->
-            {!! Form::close() !!}
+                <div class="mt-6">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                        Create Post
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#body' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    
 @endsection
+

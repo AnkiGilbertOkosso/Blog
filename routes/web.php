@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,20 @@ use App\Http\Controllers\PostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [PagesController::class, 'getIndex']);
-Route::get('/about', [PagesController::class, 'getAbout']);
-Route::get('/contact', [PagesController::class, 'getContact']);
+Route::get('/', [PageController::class, 'welcome']);
+Route::get('/contact', [PageController::class, 'contact']);
 Route::resource('posts', PostController::class);
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

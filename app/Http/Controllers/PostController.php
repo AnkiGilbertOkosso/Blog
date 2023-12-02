@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts.index')->withPosts($posts);
+        return view('posts.blog')->with('posts', $posts);
     }
 
     /**
@@ -33,25 +33,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, array(
-            'title' => 'required|max:255',
-            'body' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-        ));
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('upload/' . $filename);
+        Image::make($image)->save($location)->resize(640, 360);
 
         $post = new Post;
 
         $post->title = $request->title;
         $post->body = $request->body;
-
-        if ($request->hasFile('featured_image')) {
-            $image = $request->file('featured_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $filename);
-            Image::make($image)->resize(800, 400)->save($location);
-
-            $post->image = $filename;
-        }
+        $post->image = $filename;
 
         $post->save();
 
@@ -74,8 +71,7 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        $post = Post::find($id);
-        return view('posts.edit')->withPost($post);
+        //
     }
 
     /**
@@ -83,21 +79,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->validate($request, array(
-            'title' => 'required|max:255',
-            'body' => 'required'
-        ));
-
-        $post = Post::find($id);
-
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-
-        $post->save();
-
-        Session::flash('success', 'The blog post was successfully updated!');
-
-        return redirect()->route('posts.show', $post->id);
+        //
     }
 
     /**
@@ -105,12 +87,6 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        $post = Post::find($id);
-
-        $post->delete();
-
-        Session::flash('success', 'The blog post was successfully deleted!');
-
-        return redirect()->route('posts.index');
+        //
     }
 }
