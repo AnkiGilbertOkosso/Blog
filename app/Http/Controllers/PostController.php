@@ -71,7 +71,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->withPost($post);
     }
 
     /**
@@ -79,7 +80,28 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('upload/' . $filename);
+        Image::make($image)->save($location)->resize(640, 360);
+
+        $post = Post::find($id);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->image = $filename;
+
+        $post->save();
+
+        Session::flash('success', 'The blog post was successfully Updated!');
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -87,6 +109,12 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('success', 'The blog post was successfully deleted!');
+
+        return redirect()->route('posts.welcome');
     }
 }
