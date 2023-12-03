@@ -37,10 +37,10 @@
                 <div class="mb-8 ">
                     <p class="text-3xl font-semibold border-l-4 border-gray-800 pl-2 my-8 text-gray-700">Explore Categories</p>
                     <ul class="ml-3 text-lg font-semibold text-gray-700">
-                        <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between">Javascript <span class="text-gray-900">1</span></li>
-                        <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between">Node Js <span class="text-gray-900">5</span></li>
-                        <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between">React Js <span class="text-gray-900">11</span></li>
-                        <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between">CSS <span class="text-gray-900">8</span></li>
+                    @foreach($categories as $category)
+                        <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between"> {{ $category->name }} <span class="text-gray-900"> {{ $category->posts_count }} </span></li>
+                    @endforeach
+                    
                     </ul>
                 </div>
                 <div id="author-card" class="flex flex-col items-center my-8">

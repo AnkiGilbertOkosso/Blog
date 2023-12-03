@@ -11,7 +11,9 @@
     <div class="max-w-4xl mx-auto bg-white rounded p-6 ">
         <div class="md:flex items-center justify-between     py-3 md:py-4 bg-white-900  relative   text-black-50 ">
             <h2 class="text-2xl font-semibold mb-6 text-black-100">Categories</h2>
-            <a href="{{ route('categories.create') }}" class="text-blue-500 hover:underline px-4">Create Category</a>
+            <a href="{{ route('categories.create') }}">
+                <button class="py-2 border px-4 w-full bg-blue-500 text-gray-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-blue-600 hover:text-gray-100">Create Category</button>
+            </a>
         </div>
 
         @if(session('success'))

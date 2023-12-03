@@ -25,7 +25,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -36,7 +37,8 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'exists:categories,id'
         ]);
 
         $image = $request->file('image');
@@ -44,13 +46,14 @@ class PostController extends Controller
         $location = public_path('upload/' . $filename);
         Image::make($image)->save($location)->resize(640, 360);
 
-        $post = new Post;
+        $post = new Post($request->all());
 
         $post->title = $request->title;
         $post->body = $request->body;
         $post->image = $filename;
 
         $post->save();
+
 
         Session::flash('success', 'The blog post was successfully saved!');
 
@@ -63,7 +66,8 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::find($id);
-        return view('posts.show')->withPost($post);
+        $categories = Category::withCount('posts')->get();
+        return view('posts.show', compact('post', 'categories'));
     }
 
     /**
@@ -72,7 +76,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
-        return view('posts.edit')->withPost($post);
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -83,7 +88,8 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'exists:categories,id'
         ]);
 
         $image = $request->file('image');
@@ -97,7 +103,9 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->image = $filename;
 
-        $post->save();
+        $post->update($request->all());
+        // $post->category()->sync($request->input('category_id'));
+
 
         Session::flash('success', 'The blog post was successfully Updated!');
 

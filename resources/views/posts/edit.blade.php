@@ -31,6 +31,14 @@
                 <input type="file" name="image" id="image" accept="image/*" class="mt-1">
             </div>
 
+            <div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-600">Category</label>
+                <select name="category_id" id="category" class="mt-1 p-2 w-full border rounded-md">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+
             <div class="mt-6">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
                     Update Post

@@ -12,7 +12,7 @@
                     <div class="max-w-2xl  h-auto  flex items-center relative ">
                         <img src="{{ asset('upload/' . $post->image)}}" class="w-full h-auto" alt="placeholder img"/>
                         <div class="bg-blue-400  w-24 pt-1 cursor-pointer  h-8 text-gray-50 font-semibold text-center absolute top-0">
-                            Javascript
+                            {{ $post->category->name }}
                         </div>
                     </div>                
                     <div class="p-4">
