@@ -103,7 +103,7 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->image = $filename;
 
-        $post->update($request->all());
+        $post->save($request->all());
         // $post->category()->sync($request->input('category_id'));
 
 
