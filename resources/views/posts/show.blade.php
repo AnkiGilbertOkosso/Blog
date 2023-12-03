@@ -113,11 +113,13 @@
                     <a href="{{ route('posts.edit', $post->id )}}">
                         <button class="py-2 border px-4 w-full bg-blue-500 text-gray-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-blue-600 hover:text-gray-100">Edit post</button>
                     </a>
-                    <a href="{{ route('posts.destroy', $post->id )}}">
-                    <button type="button" class="py-2 border px-4 w-full bg-blue-500 text-gray-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-blue-600 hover:text-gray-100">
-                        Delete Post
-                    </button>
-                    </a>
+                    <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="POST" style="display: inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="py-2 border px-4 w-full bg-black-100 text-white-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-gray-600 hover:text-white-100">
+                            Delete Post
+                        </button>
+                    </form>
 
                 </div>
                 
@@ -125,15 +127,4 @@
           </section>
       </div>
      
-  
-      {{-- <script>
-        function confirmDelete() {
-            if (confirm("Are you sure you want to delete this post?")) {
-                // You can add additional logic here to perform the deletion if confirmed
-                // For example, you might want to make an AJAX request to delete the post
-                // or redirect the user to a delete route.
-                window.location.href = "{{ route('posts.destroy', ['post' => $post->id]) }}";
-            }
-        }
-    </script> --}}
 @stop

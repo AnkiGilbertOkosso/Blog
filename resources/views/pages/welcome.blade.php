@@ -80,7 +80,7 @@
                                 <h4>Updated over 2 weeks ago</h4>
                             </div>
                         </div>
-                        <p class="text-gray-700"> {!! substr($post->body, 0, 100) !!}{{ strlen($post->body) > 100 ? "..." : "" }} </p>
+                        <p class="text-gray-700"> {!! substr($post->body, 0, 250) !!}{{ strlen($post->body) > 250 ? "..." : "" }} </p>
                         <a href="{{ route('posts.show', $post->id )}}">
                             <button class="py-2 border px-4 w-full bg-blue-500 text-gray-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-blue-600 hover:text-gray-100">Read More</button>
                         </a>

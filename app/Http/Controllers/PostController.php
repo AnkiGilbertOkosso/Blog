@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts.blog')->with('posts', $posts);
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -115,6 +115,6 @@ class PostController extends Controller
 
         Session::flash('success', 'The blog post was successfully deleted!');
 
-        return redirect()->route('posts.welcome');
+        return redirect()->route('posts.index');
     }
 }
