@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use Session;
 use Image;
 
@@ -15,9 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-
-        return view('posts.index')->with('posts', $posts);
+        $posts = Post::with('category')->latest()->get();
+        return view('posts.index', compact('posts'));
     }
 
     /**

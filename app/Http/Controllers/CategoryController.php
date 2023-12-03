@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Session;
+
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::withCount('posts')->get();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -55,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -63,7 +67,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:categories',
+        ]);
+
+        $categories = Category::find($id);
+
+        $categories->name = $request->name;
+        $categories->save();
+
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -71,6 +85,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        Session::flash('success', 'The blog post was successfully deleted!');
+        return redirect()->route('categories.index');
     }
 }
