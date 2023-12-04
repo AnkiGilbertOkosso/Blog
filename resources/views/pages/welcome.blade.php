@@ -7,9 +7,9 @@
       <section class="bg-gray-900">
           <div class="flex h-96 flex-col md:flex-row       p-4 gap:4 justify-center  ">
               <div class="flex flex-col justify-center my-8  items-center">
-                <h1 class="text-4xl self-start md:text-6xl text-gray-200 font-semibold ">Tailwind CSS blog template</h1>
+                <h1 class="text-4xl self-start md:text-6xl text-gray-200 font-semibold ">Gilbert Blog</h1>
                 <p class="my-4 text-xl md:text-lg self-start md:self-center text-left text-gray-400">
-                    Download our free blog template made with tailwind css.
+                    Latest Blog Post
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center  gap-2 my-4 w-full">
                     <button class=" text-lg flex gap-2 items-center justify-center w-full  md:w-48 h-12 hover:bg-blue-700 bg-blue-600 rounded-full  text-gray-50 focus:outline-none" >
@@ -22,7 +22,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                           </svg>
-                        Download Now
+                        Create Blog
                     </button>
                 </div>
               </div>

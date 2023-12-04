@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use Session;
+use File;
 use Image;
 
 
@@ -85,6 +86,18 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $post = Post::find($id);
+
+        if ($request->file('image')) {
+            // Delete the previous image if it exists
+            $previousImage = $post->image;
+            if ($previousImage) {
+                $previousImagePath = public_path('upload/' . $previousImage);
+                if (File::exists($previousImagePath)) {
+                    File::delete($previousImagePath);
+                }
+            }
+        }
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
@@ -97,14 +110,13 @@ class PostController extends Controller
         $location = public_path('upload/' . $filename);
         Image::make($image)->save($location)->resize(640, 360);
 
-        $post = Post::find($id);
-
         $post->title = $request->title;
         $post->body = $request->body;
         $post->image = $filename;
 
+        $post->category()->associate($request->input('category_id'));
         $post->save($request->all());
-        // $post->category()->sync($request->input('category_id'));
+
 
 
         Session::flash('success', 'The blog post was successfully Updated!');
@@ -118,6 +130,12 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         $post = Post::find($id);
+
+        $imagePath = public_path('upload/' . $post->image);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
 
         $post->delete();
 
