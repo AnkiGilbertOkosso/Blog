@@ -25,12 +25,17 @@
                     {!! $post->body !!}
                  </section>
              </article>
-             <form id="comment">
-                 <textarea placeholder="your comment" cols="5" rows="6" class="outline-none focus:outline-none text-xl bg-gray-100 rounded p-4 text-gray-800 font-semibold w-full"></textarea>
-                 <input type="email" class="w-full bg-gray-100 p-2 my-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your email" required="true " />
-                 <input type="text" class="w-full bg-gray-100 p-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your name" required="true " />
+            <form action="{{ route('comments.store', $post) }}" method="post"  id="comment">
+                @csrf
+                 <textarea placeholder="your comment" name="body" id="body" cols="5" rows="6" class="outline-none focus:outline-none text-xl bg-gray-100 rounded p-4 text-gray-800 font-semibold w-full"></textarea>
+                 {{-- <input type="email" class="w-full bg-gray-100 p-2 my-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your email" required="true " />
+                 <input type="text" class="w-full bg-gray-100 p-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your name" required="true " /> --}}
                  <button class="my-2 py-2 text-xl text-center w-full bg-blue-700 text-gray-50 hover:bg-blue-600 focus:outline-none rounded" type="submit">Comment</button>
              </form>
+
+             @foreach($post->comments as $comment)
+                <p>{{ $comment->body }}</p>
+            @endforeach
             </main>
             
             <aside class="col-span-2 md:col-span-1 mt-4 md:mt-0">

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ Route::resource('posts', PostController::class)->parameters([
     'posts' => 'slug'
 ]);
 Route::resource('categories', CategoryController::class);
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])
+    ->name('comments.store');
 
 
 
