@@ -110,10 +110,10 @@
                         </div>
                     </div>
                    
-                    <a href="{{ route('posts.edit', $post->id )}}">
+                    <a href="{{ route('posts.edit', $post->slug )}}">
                         <button class="py-2 border px-4 w-full bg-blue-500 text-gray-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-blue-600 hover:text-gray-100">Edit post</button>
                     </a>
-                    <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="POST" style="display: inline-block;">
+                    <form action="{{ route('posts.destroy', ['slug' => $post->slug]) }}" method="POST" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="py-2 border px-4 w-full bg-black-100 text-white-50 rounded-lg mt-3 outline-none focus:outline-none hover:bg-gray-600 hover:text-white-100">

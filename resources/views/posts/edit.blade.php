@@ -10,7 +10,7 @@
     <div class="max-w-md mx-auto bg-white p-8 border rounded-md shadow-md">
         <h2 class="text-2xl font-semibold mb-6">Edit Blog Post</h2>
 
-        <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('posts.update', ['slug' => $post->slug]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT') <!-- Assuming you're using Laravel and following RESTful conventions -->
 

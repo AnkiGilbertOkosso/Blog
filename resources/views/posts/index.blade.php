@@ -29,7 +29,7 @@
                             </a>
                         </h4>
                         <p class="text-md my-4 text-gray-500  font-sans"> {!! substr($post->body, 0, 100) !!}{{ strlen($post->body) > 100 ? "..." : "" }} </p>
-                        <a href="{{ route('posts.show', $post->id )}}" class="text-blue-500 mb-4">Read More →</a>
+                        <a href="{{ route('posts.show', $post->slug )}}" class="text-blue-500 mb-4">Read More →</a>
                     </div>                
                 </div>
             @endforeach

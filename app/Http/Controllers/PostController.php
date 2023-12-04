@@ -8,6 +8,7 @@ use App\Models\Category;
 use Session;
 use File;
 use Image;
+use Str;
 
 
 class PostController extends Controller
@@ -51,6 +52,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->slug = Str::slug($request->input('title')) . '-' . Str::random(3);
         $post->image = $filename;
 
         $post->save();
@@ -58,25 +60,27 @@ class PostController extends Controller
 
         Session::flash('success', 'The blog post was successfully saved!');
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post->slug);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
+
         $categories = Category::withCount('posts')->get();
+
         return view('posts.show', compact('post', 'categories'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
         return view('posts.edit', compact('post', 'categories'));
     }
@@ -84,9 +88,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
 
         if ($request->file('image')) {
             // Delete the previous image if it exists
@@ -112,6 +116,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->slug = Str::slug($request->input('title')) . '-' . Str::random(3);
         $post->image = $filename;
 
         $post->category()->associate($request->input('category_id'));
@@ -121,15 +126,15 @@ class PostController extends Controller
 
         Session::flash('success', 'The blog post was successfully Updated!');
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post->slug);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
 
         $imagePath = public_path('upload/' . $post->image);
         if (File::exists($imagePath)) {

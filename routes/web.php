@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [PageController::class, 'welcome']);
 Route::get('/contact', [PageController::class, 'contact']);
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->parameters([
+    'posts' => 'slug'
+]);
 Route::resource('categories', CategoryController::class);
 
 
