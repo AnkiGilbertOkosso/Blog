@@ -12,18 +12,22 @@
                     Latest Blog Post
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center  gap-2 my-4 w-full">
+                    <a href="{{ route('posts.index') }}">
                     <button class=" text-lg flex gap-2 items-center justify-center w-full  md:w-48 h-12 hover:bg-blue-700 bg-blue-600 rounded-full  text-gray-50 focus:outline-none" >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                         </svg>
                         Our Blog
                     </button>
+                    </a>
+                    <a href="{{ route('posts.create') }}">
                     <button class="flex gap-2 text-lg items-center justify-center w-full md:w-48 h-12  hover:bg-blue-700 bg-blue-600 rounded-full text-gray-50 focus:outline-none" >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                           </svg>
                         Create Blog
                     </button>
+                    </a>
                 </div>
               </div>
           </div>
