@@ -76,8 +76,8 @@
                         <div class="flex gap-2 mb-2">
                             <div class="w-10 h-10 rounded-full bg-gray-300"></div>
                             <div class="text-sm text-gray-600">
-                                <h4>By Sarthak Kaushik</h4>
-                                <h4>Updated over 2 weeks ago</h4>
+                                <h4>By {{ $post->user->name ?? 'Anonymous' }}</h4>
+                                <h4>Updated on {{ $post->updated_at->format('M d, Y') }}</h4>
                             </div>
                         </div>
                         <p class="text-gray-700"> {!! substr($post->body, 0, 250) !!}{{ strlen($post->body) > 250 ? "..." : "" }} </p>

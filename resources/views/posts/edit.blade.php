@@ -27,6 +27,12 @@
             </div>
 
             <div class="mb-4">
+                <label for="tags" class="block text-sm font-medium text-gray-600">Tags</label>
+                <input type="text" name="tags" id="tags" class="mt-1 p-2 w-full border rounded-md" value="{{ implode(', ', $post->tags->pluck('name')->toArray()) }}" placeholder="Enter tags">
+                <small class="form-text text-muted">Enter tags separated by commas (e.g., Laravel, PHP, Web Development).</small>
+            </div>
+
+            <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-600">Image</label>
                 <input type="file" name="image" id="image" accept="image/*" class="mt-1">
             </div>

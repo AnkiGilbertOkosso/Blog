@@ -36,10 +36,7 @@
          </div>
          <div id="pagination" class="mb-8 mx-auto">
              <div class="flex w-full justify-center gap-2">
-                 <div class="w-12 h-12 text-lg text-gray-200 hover:text-gray-200 text-center font-bold flex items-center justify-center bg-blue-500 rounded-full hover:bg-blue-500  cursor-pointer">1</div>
-                 <div class="w-12 h-12 text-lg text-gray-700  hover:text-gray-200 text-center font-bold flex items-center justify-center bg-blue-300 rounded-full hover:bg-blue-500  cursor-pointer">2</div>
-                 <div class="w-12 h-12 text-lg text-gray-700 hover:text-gray-200 text-center font-bold flex items-center justify-center bg-blue-300 rounded-full hover:bg-blue-500  cursor-pointer">3</div>
-                 <div class="w-12 h-12 text-lg text-gray-700 hover:text-gray-200 text-center font-bold flex items-center justify-center bg-blue-300 rounded-full hover:bg-blue-500  cursor-pointer">4</div>
+                {{ $posts->links() }}
              </div>
          </div>
      </div>

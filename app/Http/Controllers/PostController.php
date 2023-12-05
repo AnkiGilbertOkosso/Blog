@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Category;
 use Session;
 use File;
@@ -18,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category')->latest()->get();
+        $posts = Post::with('category')->latest()->paginate(3);
         return view('posts.index', compact('posts'));
     }
 
@@ -39,6 +40,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
+            'tags' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'exists:categories,id'
         ]);
@@ -57,10 +59,22 @@ class PostController extends Controller
 
         $post->save();
 
+        if ($request->has('tags')) {
+            $tagNames = explode(',', $request->input('tags'));
+            $tagIds = [];
+            
+            foreach ($tagNames as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $tagIds[] = $tag->id;
+            }
+    
+            $post->tags()->attach($tagIds);
+        }
 
         Session::flash('success', 'The blog post was successfully saved!');
 
         return redirect()->route('posts.show', $post->slug);
+        
     }
 
     /**
@@ -121,6 +135,18 @@ class PostController extends Controller
 
         $post->category()->associate($request->input('category_id'));
         $post->save($request->all());
+
+        if ($request->has('tags')) {
+            $tagNames = explode(',', $request->input('tags'));
+            $tagIds = [];
+            
+            foreach ($tagNames as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $tagIds[] = $tag->id;
+            }
+    
+            $post->tags()->attach($tagIds);
+        }
 
 
 

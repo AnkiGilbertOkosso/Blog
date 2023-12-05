@@ -9,7 +9,7 @@
              <div class="flex mt-2 my-2 items-center gap-4">
                  <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
                  <div class="text-gray-500">
-                     By <span class="text-gray-800 cursor-pointer">Sarthak Kaushik</span> on 14th April 2020
+                     By <span class="text-gray-800 cursor-pointer">{{ $post->user->name ?? 'Anonymous' }}</span> on {{ $post->created_at->format('M d, Y') }}
                  </div>
              </div>
 
@@ -33,9 +33,21 @@
                  <button class="my-2 py-2 text-xl text-center w-full bg-blue-700 text-gray-50 hover:bg-blue-600 focus:outline-none rounded" type="submit">Comment</button>
              </form>
 
-             @foreach($post->comments as $comment)
-                <p>{{ $comment->body }}</p>
-            @endforeach
+            <hr class="my-6 mt-8">
+
+            {{-- Display Comments --}}
+            <div>
+                <h3 class="text-xl font-bold mb-4">Comments</h3>
+
+                @forelse($post->comments as $comment)
+                    <div class="bg-white p-4 rounded shadow mb-4">
+                        <p class="text-gray-800">{{ $comment->body }}</p>
+                        <p class="text-gray-600 text-sm mt-2">Posted by: {{ $comment->user->name ?? 'Anonymous' }} on {{ $comment->created_at->format('M d, Y \a\t H:i:s') }}</p>
+                    </div>
+                @empty
+                    <p class="text-gray-500">No comments yet. Be the first to comment!</p>
+                @endforelse
+            </div>
             </main>
             
             <aside class="col-span-2 md:col-span-1 mt-4 md:mt-0">
@@ -48,6 +60,14 @@
                     
                     </ul>
                 </div>
+                <div class="mb-8 ">
+                    <p class="text-3xl font-semibold border-l-4 border-gray-800 pl-2 my-8 text-gray-700">Explore Tags</p>
+                    <ul class="ml-3 text-lg font-semibold text-gray-700">
+                        @foreach($post->tags as $tag)
+                            <li class="border py-2 px-2 mt-2 mb-1 cursor-pointer hover:text-gray-900 rounded-sm flex justify-between"> {{ $tag->name }} <span class="text-gray-900"> {{ $tag->posts_count }} </span></li>
+                        @endforeach
+                    </ul>
+                </div>
                 <div id="author-card" class="flex flex-col items-center my-8">
                     <p class="text-3xl font-semibold border-l-4 my-8 border-gray-800 pl-2 text-gray-700 self-start">About Author</p>
 
@@ -55,7 +75,7 @@
                         <div class="w-48 h-48 bg-gray-900 bg-author-img bg-contain bg-no-repeat bg-center rounded-full"></div>
                     </div>
                     <div>
-                        <p id="author-name" class="text-2xl text-center font-medium my-4 text-gray-800">Sarthak Kaushik</p>
+                        <p id="author-name" class="text-2xl text-center font-medium my-4 text-gray-800">{{ $post->user->name ?? 'Anonymous' }}</p>
                         <p class="my-1 text-gray-600 text-center">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Non libero nam sit! Maxime omnis expedita sequi sapiente consequatur praesentium quae voluptates explicabo deleniti asperiores. Nemo id soluta fuga tenetur ex?
                         </p>
