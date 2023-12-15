@@ -70,7 +70,7 @@
                     <div class="max-w-2xl  h-auto  flex items-center relative ">
                         <img src="{{ asset('upload/' . $post->image)}} " width="640" height="360" class="w-full h-auto" alt="placeholder img"/>
                         <div class="bg-blue-400  w-24 pt-1  h-8 text-gray-50 font-semibold text-center absolute top-0">
-                            {{-- {{ $post->category->name }} --}}
+                            {{ $post->category->name }}
                         </div>
                     </div>
                     <div class="">
