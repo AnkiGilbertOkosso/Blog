@@ -15,16 +15,6 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if the user is authenticated
-        if (!$request->user()) {
-            abort(403, 'Unauthorized');
-        }
-
-        // Check if the user has the expected role
-        if ($request->user()->role !== $role) {
-            abort(403, 'Unauthorized');
-        }
-        
         return $next($request);
     }
 }

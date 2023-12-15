@@ -2,7 +2,7 @@
 @extends('layout')
 
 @section('content')
-    
+
 
       <section class="bg-gray-900">
           <div class="flex h-96 flex-col md:flex-row       p-4 gap:4 justify-center  ">
@@ -32,7 +32,7 @@
               </div>
           </div>
       </section>
-      
+
       <div class="container mx-auto">
 
          <section id="newsletter" class="grid grid-cols-2 gap-2  my-8 p-2">
@@ -44,8 +44,8 @@
                 </svg>
                 <p class="text-xl text-center text-blue-800">
                     Join Our newsletter and get upcoming posts directly in your mail
-    
-    
+
+
                 </p>
             </div>
             <form class="flex flex-col justify-center col-span-2 md:col-span-1 md:mt-0 mt-4">
@@ -59,18 +59,18 @@
             </form>
         </section>
 
-         
-         
+
+
         <section id="featured-posts" class="grid  sm:grid-cols-2 gap-4 p-2">
             <h2 class="col-span-full text-3xl md:text-4xl mb-8 border-l-4   border-blue-800 pl-2   my-4 text-blue-800 ">Featured posts</h2>
             @foreach ($posts as $post)
-                
-            
+
+
                 <div class="grid lg:grid-cols-2 border rounded-lg gap-4 h-auto p-4">
                     <div class="max-w-2xl  h-auto  flex items-center relative ">
                         <img src="{{ asset('upload/' . $post->image)}} " width="640" height="360" class="w-full h-auto" alt="placeholder img"/>
                         <div class="bg-blue-400  w-24 pt-1  h-8 text-gray-50 font-semibold text-center absolute top-0">
-                            {{ $post->category->name }}
+                            {{-- {{ $post->category->name }} --}}
                         </div>
                     </div>
                     <div class="">
@@ -93,7 +93,7 @@
             @endforeach
          </section>
       </div>
-        
-    </div>  
+
+    </div>
 
 @endsection
