@@ -28,7 +28,7 @@ This is a simple blog post app built with Laravel, featuring CRUD operations, ca
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/blog-post-app.git
+   git clone https://github.com/AnkiGilbertOkosso/Blog.git
    ```
 
 2. Install dependencies:
