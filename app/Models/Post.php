@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'body', 'slug',  'image', 'category_id'];
+    protected $fillable = [
+        'title',
+        'body',
+        'slug',
+        'image',
+        'category_id'
+    ];
 
     public function category()
     {
