@@ -7,7 +7,7 @@
     <title>Categories</title>
 </head>
 <body class="bg-gray-100 p-8">
-
+    @include('partials.navbar')
     <div class="max-w-4xl mx-auto bg-white rounded p-6 ">
         <div class="md:flex items-center justify-between     py-3 md:py-4 bg-white-900  relative   text-black-50 ">
             <h2 class="text-2xl font-semibold mb-6 text-black-100">Categories</h2>

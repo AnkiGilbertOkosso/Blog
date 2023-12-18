@@ -62,19 +62,18 @@ class PostController extends Controller
         if ($request->has('tags')) {
             $tagNames = explode(',', $request->input('tags'));
             $tagIds = [];
-            
+
             foreach ($tagNames as $tagName) {
                 $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
                 $tagIds[] = $tag->id;
             }
-    
+
             $post->tags()->attach($tagIds);
         }
 
         Session::flash('success', 'The blog post was successfully saved!');
 
         return redirect()->route('posts.show', $post->slug);
-        
     }
 
     /**
@@ -139,12 +138,12 @@ class PostController extends Controller
         if ($request->has('tags')) {
             $tagNames = explode(',', $request->input('tags'));
             $tagIds = [];
-            
+
             foreach ($tagNames as $tagName) {
                 $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
                 $tagIds[] = $tag->id;
             }
-    
+
             $post->tags()->attach($tagIds);
         }
 
@@ -175,3 +174,4 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 }
+
