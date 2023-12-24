@@ -23,7 +23,8 @@
                         <h3 class="text-lg font-semibold mb-2">{{ __('Manage Posts') }}</h3>
                         <p>{{ __('Create, edit, and delete your blog posts.') }}</p>
                         <a href="{{ route('posts.index') }}"
-                            class="text-blue-500 hover:underline">{{ __('Go to Posts') }}</a>
+                            class="text-blue-500 hover:underline">{{ __('Go to Posts') }}
+                        </a>
                     </div>
                 </div>
 
@@ -33,7 +34,8 @@
                         <h3 class="text-lg font-semibold mb-2">{{ __('Manage Categories') }}</h3>
                         <p>{{ __('Create, edit, and delete blog categories.') }}</p>
                         <a href="{{ route('categories.index') }}"
-                            class="text-blue-500 hover:underline">{{ __('Go to Categories') }}</a>
+                            class="text-blue-500 hover:underline">{{ __('Go to Categories') }}
+                        </a>
                     </div>
                 </div>
             </div>
