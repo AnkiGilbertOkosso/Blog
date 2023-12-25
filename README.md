@@ -3,10 +3,6 @@
 
 This is a simple blog post app built with Laravel, featuring CRUD operations, categories, slugs, commenting, tags, and user authentication.
 
-
-
-
-
 ## Features
 - Create, Read, Update, and Delete (CRUD) operations for blog posts and blog Categories
 - Categories for organizing posts

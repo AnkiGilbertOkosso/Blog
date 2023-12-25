@@ -49,7 +49,7 @@
                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <p class="text-xl text-center text-blue-800">
-                    Join Our newsletter and get upcoming posts directly in your mail
+                    Join Our newsletter and get upcoming posts directly in your e-mail
 
 
                 </p>
@@ -57,7 +57,7 @@
             <form class="flex flex-col justify-center col-span-2 md:col-span-1 md:mt-0 mt-4">
                 <div>
                     <!-- <label class="text-md font-semibold text-gray-800 ">Your Email</label> -->
-                    <input type="email" placeholder="your email"
+                    <input type="email" placeholder="Enter your email"
                         class="mt-4 p-4 mb-8 border focus:outline-white w-full text-gray-800" />
 
                 </div>
