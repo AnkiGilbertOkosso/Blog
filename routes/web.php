@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome']);
 Route::get('/contact', [PageController::class, 'contact']);
+Route::get('/about', [PageController::class, 'about']);
 // Route::resource('posts', PostController::class)->parameters([
 //     'posts' => 'slug'
 // ]);
